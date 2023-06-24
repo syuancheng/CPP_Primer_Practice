@@ -3,6 +3,9 @@
 // Exercise 7.2, P233
 // 
 
+#ifndef SYUAN_EX7_2_H
+#define SYUAN_EX7_2_H
+
 #include <iostream>
 
 struct Sales_data
@@ -21,3 +24,6 @@ Sales_data& Sales_data::combine(const Sales_data& rhs) {
 
     return *this;
 }
+
+
+#endif // SYUAN_EX7_2_H
