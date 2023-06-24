@@ -6,9 +6,9 @@
 #ifndef SYUAN_EX7_4_H
 #define SYUAN_EX7_4_H
 
-#include <iostream>
+#include <string>
 
-struct Person
+struct Class
 {
     std::string name;
     std::string address;
