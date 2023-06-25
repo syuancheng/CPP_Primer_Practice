@@ -3,8 +3,9 @@
 ## Class
 
 ### 数据成员
-- this: 常量指针，Sales_data *const. total.combine(trans); total的地址被绑定到隐式的this参数上。
-
+- this
+  - Sales_data *const. total.combine(trans); total的地址被绑定到隐式的this参数上。
+  - 是一个常量指针，指向的值可以改变， 但是指针的值不能改变。
 ### 函数
 #### 成员函数
 - 声明在类内部
