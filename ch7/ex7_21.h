@@ -16,7 +16,7 @@ private:
     unsigned units_sold;
     double revenue;
 public:
-    Sales_data(/* args */);
+    Sales_data(/* args */)=default;
     Sales_data(const std::string& s): bookNo(s) {}
     Sales_data(const std::string& s, unsigned n, double p): bookNo(s), units_sold(n), revenue(p*n) {}
     Sales_data(std::istream &is) {read(is, *this);}
