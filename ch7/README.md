@@ -91,4 +91,4 @@
 - `explicit` 抑制构造函数的隐式转换
   - 但是仍然可以显示转换。`Sales_data(str)`
 
-> const reference的初始化不需要对象。
+> const reference的初始化时，允许用任意表达式作为初始值，只要该表达式的结果可以转换成引用的类型即可。
