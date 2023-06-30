@@ -45,6 +45,13 @@ Sales_data add(const Sales_data& lhs, const Sales_data& rhs) {
     return sum; //sum是局部变量，但是我们返回的是值拷贝
 }
 
+Sales_data& Sales_data::combine(const Sales_data& rhs) {
+    units_sold += rhs.units_sold;
+    revenue += rhs.revenue;
+
+    return *this;
+}
+
 inline double Sales_data::avg_price() const {
     return revenue/units_sold;
 }
