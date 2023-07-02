@@ -63,7 +63,9 @@ bool fcn(const Sales_data *trans, Sales_data accum)
 - 需要拷贝构造函数的类也需要拷贝赋值运算符
 
 ### 使用=default
-
+- 可以将拷贝控制成员定义为`=default`来显示地要求编译器生成合成的版本。
+- 当我们在类内用`=default`修饰成员函数，合成的函数将隐式地声明为inline的。
+  - 如果不希望是inline，应该在类外定义的时候用`=default`
 ### 阻止拷贝
 
 ## 2.拷贝控制和资源管理
