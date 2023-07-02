@@ -1,6 +1,12 @@
 #ifndef SYUAN_EX13_22_H
 #define SYUAN_EX13_22_H
 
+//Exercise 13.24:
+//Q: What would happen if the version of HasPtr in this section didn’t define a destructor? 
+//What if HasPtr didn’t define the copy constructor?
+//A: If HasPtr didn't define a destructor, a memory leak would occur, compiler synthesized destructor does not manage dynamic memory. 
+//If HasPtr didn't define the copy constructor, we would get pointer-like copy behaviour. 
+//The ps pointer would be copied to the left hand side, but ps in the lhs and the rhs would still point to the same string on the heap.
 
 #include <string>
 
