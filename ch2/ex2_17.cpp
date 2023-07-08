@@ -11,7 +11,6 @@ int main() {
   cout << i << " " << ri << endl;
 
   int ni = 20;
-
   ri = ni; 
     cout << i << " " << ri << endl;
     return 0;
