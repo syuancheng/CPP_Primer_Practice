@@ -70,3 +70,27 @@
 - `p.reset(q, d)` 如果p是唯一指向这个对象的，那么会调用d来释放对象。
 - `shared_ptr<T> p(q, d)` p接管内置指针q的所有权，并且用d代替delete [Exercise 12.14](../ch12/ex12_14.cpp)
 - `shared_ptr<T> p(p2, d)` p是shared_ptr p2的拷贝，并且使用d代替delete
+
+
+### unique_ptr
+- 某一时刻只能有一个unique_ptr指向一个对象。
+- 当unique_ptr被销毁时，所指向的对象也被销毁。
+- 初始化
+  - 初始化时必须绑定到一个new返回的指针
+  - 必须直接初始化
+  - `unique_ptr<int> p2(new int(42))`
+- 不支持普通拷贝和赋值
+  - `p3 = p2; unique_ptr<int> p2(p1)` ❎
+  - 从函数中返回一个unique_ptr是支持的
+- 操作
+  - 创建
+    - `unique_ptr<T> u1`: 空unique_ptr， 指向T类型的对象
+    - `unique_ptr<T, D> u2`: 使用D类型的func来释放对象
+    - `unique_ptr<T, D> u(d)`: 空unique_ptr，使用D类型的func来释放对象
+  - 解除绑定
+    - `u.release()`: u放弃对指针的控制，并返回这个指针，u会被置空.
+      - 用来初始化另一个智能指针，或者给另一个智能指针赋值
+  - 释放
+    - `u.reset()`:释放u指向的对象
+    - `u.reset(q)`:令u指向q
+    - `u=nullptr`:释放u指向的对象，将u置为空
