@@ -17,7 +17,7 @@
 
 ### shared_ptr类
 - 支持的操作
-  - `shared_ptr<T> sp`:空指针指针，可以指向类型为T的对象
+  - `shared_ptr<T> sp`:空智能指针，可以指向类型为T的对象
   - `if(p)`将p作为一个条件判断，若指向一个对象，则为true
   - `*p`解引用，获得它指向的对象
   - `p->mem` <=>  `(*p).mem`
@@ -66,4 +66,7 @@
 - 不要混合使用raw指针和智能指针, 会导致double free. [Exercise 12.13](../ch12/ex12_13.cpp)
 - get() 返回一个raw指针
   - 不要使用get初始化另一个智能指针
-- `p.reset(q)` p指向一个新对象
+- `p.reset(q)` p指向一个新对象. 
+- `p.reset(q, d)` 如果p是唯一指向这个对象的，那么会调用d来释放对象。
+- `shared_ptr<T> p(q, d)` p接管内置指针q的所有权，并且用d代替delete [Exercise 12.14](../ch12/ex12_14.cpp)
+- `shared_ptr<T> p(p2, d)` p是shared_ptr p2的拷贝，并且使用d代替delete
