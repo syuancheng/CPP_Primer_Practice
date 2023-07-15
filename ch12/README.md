@@ -44,4 +44,26 @@
   - 1. 程序不知道自己需要多少对象；容器类
   - 2. 程序不知道所需对象的准确类型
   - 3. 程序需要在多个对象间共享数据
-- 
+
+### 直接管理内存
+- new动态分类和初始化对象
+  - 在堆(自由空间)分配的内存是**无名**的，因此new无法为分配的对象**命名**，而是返回一个**指向该对象的指针**。
+- 动态分配const对象
+  - `const string *pos = new const string`
+  - 地址不可变，指向值可变
+  - `delete pos` 可以被销毁
+- delete
+  - 包含两个操作：1.销毁给定的指针所指的对象；2.释放对应的内存。
+  - const对象也可以销毁
+  - delete之后指针就变为空指针(指向无效的内存)
+    - delete之后重置指针，只对当前指针有效
+
+### shared_ptr和new的结合使用
+- 使用`new`返回的指针初始化shared_ptr
+  - raw指针不能隐式转换为一个shared_ptr，因为接受一个raw指针的shared_ptr的构造函数是explicit的
+  - `shared_ptr<int> p1 = new int(10);` 错误
+  - `shared_ptr<int> p2(new int(10));` 正确，使用了直接初始化形式
+- 不要混合使用raw指针和智能指针, 会导致double free. ![Exercise 12.13](../ch12/ex12_13.cpp)
+- get() 返回一个raw指针
+  - 不要使用get初始化另一个智能指针
+- `p.reset(q)` p指向一个新对象

@@ -8,9 +8,11 @@
 class StrBlob {
 public:
     typedef std::vector<std::string>::size_type size_type;
+
     StrBlob():data(std::make_shared<std::vector<std::string> >()) {}
     StrBlob(std::vector<std::string> il)
         : data(std::make_shared<std::vector<std::string> >(il)) {}
+
     size_type size() const { return data->size(); }
     bool empty() const { return data->empty(); }
     void push_back(const std::string &t) { data->push_back(t); }
