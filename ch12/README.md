@@ -63,7 +63,7 @@
   - raw指针不能隐式转换为一个shared_ptr，因为接受一个raw指针的shared_ptr的构造函数是explicit的
   - `shared_ptr<int> p1 = new int(10);` 错误
   - `shared_ptr<int> p2(new int(10));` 正确，使用了直接初始化形式
-- 不要混合使用raw指针和智能指针, 会导致double free. ![Exercise 12.13](../ch12/ex12_13.cpp)
+- 不要混合使用raw指针和智能指针, 会导致double free. [Exercise 12.13](../ch12/ex12_13.cpp)
 - get() 返回一个raw指针
   - 不要使用get初始化另一个智能指针
 - `p.reset(q)` p指向一个新对象
