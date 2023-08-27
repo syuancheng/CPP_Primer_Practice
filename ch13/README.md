@@ -1,10 +1,10 @@
-# chapter13 拷贝控制
-
+# Chapter13 拷贝控制
 
 ## 1.拷贝、赋值、销毁
 ### 拷贝构造函数
 - **what**: 如果一个构造函数的第一个形参是**自身类型的引用**，而且其他参数都有默认值，则此构造函数称为**拷贝构造函数**，`class Foo { public: Foo(const Foo&); }`
   - 不能是explicit的，因为拷贝构造函数在几种情况下会被隐式的调用。
+    > Note: `explicit`抑制构造函数的隐式转换
   - 即使我们定义了其他构造函数(非拷贝)，编译器也会为我们合成一个拷贝构造函数。
     - 编译器把给定对象中的每个非static的成员拷贝到正在创建的对象中来。
 - 拷贝初始化
@@ -15,7 +15,7 @@
     - 从一个返回类型是非引用类型的函数中返回一个对象
     - 用花括号列表初始化一个数组中的元素或一个聚合类中的成员
     - insert push是拷贝初始化，emplace是直接初始化
-    - 以下共有六处使用了拷贝构造函数
+  - 以下共有六处使用了拷贝构造函数
 ```
 Point global;
 Point foo_bar(Point arg) // 1
@@ -43,7 +43,7 @@ Point foo_bar(Point arg) // 1
 - When
   - 变量离开其作用域时
   - 当一个对象被销毁时，其成员被销毁
-    - * 对于普通指针， 不会delete它所指的对象
+    - 对于普通指针， 不会delete它所指的对象
   - 容器被销毁时，其元素被销毁
   - 指针 //TODO
   - 对于临时对象，当创建它的完整表达式结束时被销毁
@@ -80,12 +80,18 @@ bool fcn(const Sales_data *trans, Sales_data accum)
 ### 行为像值的类
 [练习 13.22](ex13_22.h)
 - 拷贝赋值运算符
-  - 将对象赋予它自身，必须能正常工作
+  - 将对象赋予它自身，必须能正常工作.(销毁左侧运算对象资源之前，拷贝右侧运算对象)
   - 组合了析构函数和拷贝构造函数的工作
 ### 行为像指针的类
 [练习 13.27](ex13_27.h)
 - 引用计数法
 ## 3.交换操作
+- swap
+  - 在需要交换两个元素时会调用swap
+  - swap函数应该调用swap，而不是std::swap
+    - 如果一个类成员有自己的swap函数，那调用std::swap就是错误的
+  - Would the pointerlike version of HasPtr benefit from defining a swap function? If so, what is the benefit? If not, why not?
+    > Essentially, the specific avoiding memory allocation is the reason why it improve performance. As for the pointerlike version, no dynamic memory allocation anyway. Thus, a specific version for it will not improve the performance.
 
 ## 4.拷贝控制示例
 
