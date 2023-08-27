@@ -90,7 +90,8 @@ bool fcn(const Sales_data *trans, Sales_data accum)
   - 在需要交换两个元素时会调用swap
   - swap函数应该调用swap，而不是std::swap
     - 如果一个类成员有自己的swap函数，那调用std::swap就是错误的
-  - 
+  - Would the pointerlike version of HasPtr benefit from defining a swap function? If so, what is the benefit? If not, why not?
+    > Essentially, the specific avoiding memory allocation is the reason why it improve performance. As for the pointerlike version, no dynamic memory allocation anyway. Thus, a specific version for it will not improve the performance.
 
 ## 4.拷贝控制示例
 
