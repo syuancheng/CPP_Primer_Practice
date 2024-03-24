@@ -31,4 +31,11 @@
 *.out
 *.app
 
+# 忽略所有的二进制文件
+*.bin
+*.exe
+*.dll
+*.so
+*.dylib
+
 /bin
