@@ -3,21 +3,19 @@
 using namespace std;
 
 int fact(int val) {
-    int ret = 1;
-    while (val > 1)
-    {
-        // ret = ret*val;
-        // val--;
-        ret *= val--;
-    }
+  int ret = 1;
+  while (val > 1) {
+    // ret = ret*val;
+    // val--;
+    ret *= val--;
+  }
 
-    return ret;
+  return ret;
 }
-
 
 int main() {
 
-    int s = fact(5);
+  int s = fact(5);
 
-    cout << "result is: " <<  s << endl;
+  cout << "result is: " << s << endl;
 }

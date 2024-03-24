@@ -1,22 +1,22 @@
 #include <iostream>
 
-void swap(int*& a, int*& b) {
-    auto tmp = a;
-    a = b;
-    b = tmp;
+void swap(int *&a, int *&b) {
+  int *tmp = a;
+  a = b;
+  b = tmp;
 }
 
 int main() {
-    int m = 2, n = 7;
+  int m = 2, n = 7;
 
-    int* mP = &m;
-    int* nP = &n;
+  int *mP = &m;
+  int *nP = &n;
 
-    std::cout << "mp=" << mP << " ,np=" << nP << std::endl;
+  std::cout << "mp=" << mP << " ,np=" << nP << std::endl;
 
-    swap(mP, nP);
+  swap(mP, nP);
 
-    std::cout << "mp=" << mP << " ,np=" << nP << std::endl;
+  std::cout << "mp=" << mP << " ,np=" << nP << std::endl;
 
-    return 0;
+  return 0;
 }
