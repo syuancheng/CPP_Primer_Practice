@@ -37,7 +37,7 @@
 - 唯一的区别是默认**访问权限**不同
   - class(private)
   - struct(public)
-### 友元 [20,22]
+### 友元 [20,22] [练习](../ch7/ex7_21.h)
 - 允许特定的非成员函数访问一个类的私有成员。
 - 声明以关键字friend开始，`friend Sales_data add(const Sales_data&, const Sales_data&);`表示非成员函数`add`可以访问类`Sales_data`的非公有成员。
 - 最好在类定义开始或结束前的位置声明友元。
