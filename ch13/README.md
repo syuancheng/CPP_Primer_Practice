@@ -9,7 +9,7 @@
     - 编译器把给定对象中的每个非static的成员拷贝到正在创建的对象中来。
 - 拷贝初始化
   - 通常使用拷贝构造函数或者移动构造函数
-  - when
+  - when [practice](ex13_13.h)
     - 用`=`**定义变量**时
     - 将一个对象作为实参传递给一个非引用类型的形参
     - 从一个返回类型是非引用类型的函数中返回一个对象
@@ -94,11 +94,54 @@ bool fcn(const Sales_data *trans, Sales_data accum)
     > Essentially, the specific avoiding memory allocation is the reason why it improve performance. As for the pointerlike version, no dynamic memory allocation anyway. Thus, a specific version for it will not improve the performance.
 
 ## 4.拷贝控制示例
+[practice](ex13_34_36_37.h)
+
 
 ## 5.动态内存管理类
 
 ## 6.对象移动
 ### 右值引用
+#### 左值引用和右值引用的区别
+左值引用和右值引用是C++中两种不同类型的引用，它们在语义上和用法上有一些重要区别：
+
+定义：
+
+左值引用（lvalue reference）是通过 & 符号定义的，用于引用左值。
+右值引用（rvalue reference）是通过 && 符号定义的，用于引用右值。
+绑定对象：
+
+左值引用只能绑定到左值（具名对象）。
+右值引用只能绑定到右值（临时对象、字面常量、即将被销毁的对象）。
+生命周期：
+
+左值引用的生命周期通常与其绑定的对象相同。
+右值引用通常用于表示临时对象或者即将被销毁的对象，因此其生命周期可能较短。
+用途：
+
+左值引用通常用于传递参数、函数返回值以及引用类型的成员变量。
+右值引用通常用于移动语义、完美转发以及某些高级模板编程技术。
+示例：
+```
+void foo(int& lref) {
+    std::cout << "Received a left value reference" << std::endl;
+}
+
+void bar(int&& rref) {
+    std::cout << "Received a right value reference" << std::endl;
+}
+
+int main() {
+    int x = 5;  // x 是左值
+    int&& y = 10;  // 10 是右值
+    int& z = x;  // x 是左值
+
+    foo(x);  // 传递左值给 foo 函数
+    // foo(y);  // 错误！y 是右值，不能绑定到左值引用
+    bar(std::move(y));  // 使用 std::move 将 y 转换为右值引用，传递给 bar 函数
+
+    return 0;
+}
+```
 
 ### 移动构造函数与移动赋值运算符
 
