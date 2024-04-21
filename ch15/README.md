@@ -41,6 +41,10 @@ protected members: base class itself, friend and derived classes can access
   - final: final函数不能被覆盖
 
 ## 4.抽象基类
+- 纯虚函数
+  - virtual + `=0`
+  - 含有纯虚函数的类是**抽象基类**
+    - 负责定义接口，不能创建一个抽象基类的对象
 
 ## 5.访问控制与继承
 
