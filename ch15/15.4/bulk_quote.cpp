@@ -1,6 +1,5 @@
 #include "bulk_quote.h"
 #include "disc_quote.h"
-#include "quote.h"
 #include <iostream>
 
 double Bulk_quote::net_price(std::size_t n) const {
@@ -10,11 +9,11 @@ double Bulk_quote::net_price(std::size_t n) const {
   return n * price;
 }
 
-// void Bulk_quote::debug() const {
-//   std::cout << "data members of this class:\n"
-//             << "qty= " << this->sold_qty << " "
-//             << "discount= " << this->discount << " ";
-// }
+void Bulk_quote::debug() const {
+  std::cout << "data members of this class:\n"
+            << "qty= " << this->sold_qty << " "
+            << "discount= " << this->discount << " ";
+}
 
 double print_total(std::ostream &os, const Quote &item, size_t n) {
   double ret = item.net_price(n);

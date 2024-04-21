@@ -2,7 +2,6 @@
 #define A81A19CB_66EE_4B1B_ADE4_0187626308A1
 
 #include "disc_quote.h"
-#include <cstddef>
 #include <string>
 
 class Bulk_quote : public Disc_quote {
@@ -13,7 +12,7 @@ public:
 
   double net_price(std::size_t n) const override;
 
-//   void debug() const override;
+  void debug() const override;
 };
 
 #endif /* A81A19CB_66EE_4B1B_ADE4_0187626308A1 */
