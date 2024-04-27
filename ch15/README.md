@@ -47,6 +47,10 @@ protected members: base class itself, friend and derived classes can access
     - 负责定义接口，不能创建一个抽象基类的对象
 
 ## 5.访问控制与继承
+- protected
+  - 基类和派生类的用户对象，不可访问
+  - 派生类的成员和友元，可以访问
+  - 派生类的成员或友元，只能通过派生类对象来访问基类的pretected成员。
 
 ## 6.继承中的类作用域
 
