@@ -97,6 +97,36 @@ bool fcn(const Sales_data *trans, Sales_data accum)
 [practice](ex13_34_36_37.h)
 
 ## 5.动态内存管理类
+### allocator 
+#### 分配/释放内存(未构造)
+```
+allocator<string> alloc;
+auto const p = alloc.allocate(n); //分配一段原始的，未构造的内存，保存n个string
+alloc.deallocate(p, n); //释放内存，释放从指针p开始的内存， 这块内存保存了n个string
+```
+#### 构造/销毁对象
+```
+auto q = p;
+alloc.construct(q++); //*q为空字符串
+alloc.construct(q++, 3, 'c');// *q为 ccc
+alloc.construct(q++, "hi");//*q未hi
+
+alloc.destroy(p); //p为指针，对p指向的对象执行析构函数
+```
+
+#### 拷贝和填充未初始化内存
+```
+uninitialized_copy(b,e,b2);//从迭代器b和e指出的返回中拷贝元素到迭代器b2指定的未构造的原始内存中。
+
+//e.g
+//扩容为原来的两倍
+auto p = alloc.allocate(vi.size() * 2);
+//将原来的元素拷贝到从p开始的新的内存
+auto q = uninitialed_copy(vi.begin(), vi.end(), p);
+//
+uninitialed_fill_n(q,vi.size(), 42); //剩余元素初始化为42
+```
+
 
 
 ## 6.对象移动

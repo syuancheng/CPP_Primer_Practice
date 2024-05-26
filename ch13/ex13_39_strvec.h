@@ -2,6 +2,7 @@
 #define E9EE7B36_54AA_4505_9B5D_3D0284A7ED91
 
 #include <cstddef>
+#include <initializer_list>
 #include <memory>
 #include <string>
 #include <utility>

@@ -1,5 +1,6 @@
 #include "ex13_39_strvec.h"
 #include <cstddef>
+#include <initializer_list>
 #include <memory>
 
 void StrVec::push_back(const std::string &s) {
@@ -10,7 +11,7 @@ void StrVec::push_back(const std::string &s) {
 std::pair<std::string *, std::string *>
 StrVec::alloc_n_copy(const std::string *b, const std::string *e) {
   auto data = alloc.allocate(e - b);
-  return {data, std::uninitialized_copy(b, e, data)};
+  return std::make_pair(data, std::uninitialized_copy(b, e, data));
 }
 
 void StrVec::free() {
