@@ -7,14 +7,19 @@ class String {
   String(const String &);
   String &operator=(const String &);
 
-  //TODO: add rvalue func
+  // TODO: add rvalue func
 
   ~String();
+
+public:
+    char *first() const { return elements; }
+    char *last() const { return end; }
 
 private:
   std::pair<char *, char *> alloc_n_copy(const char *, const char *);
   void range_initializer(const char *, const char *);
   void free();
+
 
 private:
   char *elements;
