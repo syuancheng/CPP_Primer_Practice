@@ -12,8 +12,17 @@ public:
   StrVec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
   StrVec(const StrVec &);
   StrVec &operator=(const StrVec &);
+  StrVec(StrVec &&s) noexcept
+      : elements(s.elements), first_free(s.first_free), cap(s.cap) {
+    s.elements = s.first_free = s.cap = nullptr_t;
+      }
+  StrVec &operator=(StrVec &&);
+
   ~StrVec();
+
+public:
   void push_back(const std::string &);
+  void push_back(std::string &&);
   size_t size() const { return first_free - elements; }
   size_t capacity() const { return cap - elements; }
   std::string *begin() const { return elements; }

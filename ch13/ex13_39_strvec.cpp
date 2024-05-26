@@ -2,16 +2,22 @@
 #include <cstddef>
 #include <initializer_list>
 #include <memory>
+#include <type_traits>
 
 void StrVec::push_back(const std::string &s) {
   chk_n_alloc();
   alloc.construct(first_free++, s);
 }
 
+void StrVec::push_back(std::string &&s) {
+  chk_n_alloc();
+  alloc.construct(first_free++, std::move(s));//move 会返回一个右值引用， 因此会使用string的移动构造函数
+}
+
 std::pair<std::string *, std::string *>
 StrVec::alloc_n_copy(const std::string *b, const std::string *e) {
-  auto data = alloc.allocate(e - b);
-  return std::make_pair(data, std::uninitialized_copy(b, e, data));
+  auto newstart = alloc.allocate(e - b);
+  return std::make_pair(newstart, std::uninitialized_copy(b, e, newstart));
 }
 
 void StrVec::free() {
