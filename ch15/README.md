@@ -35,6 +35,10 @@ A virtual member in a base class expects its derived class define its own versio
 private member: base class itself and friend can access
 protected members: base class itself, friend and derived classes can access
 
+15.9 When is it possible for an expression’s static type to differ from its dynamic type? Give three examples in which the static and dynamic type differ.
+[answer](ex15_9.cpp)
+
+
 ## 3.虚函数
 - 所有的虚函数都必须有定义，因为编译器也不知道使用哪个虚函数。
 - 一个函数被声明为虚函数， 那么在所有派生类中它都是虚函数。
@@ -42,6 +46,9 @@ protected members: base class itself, friend and derived classes can access
 - final 和 override
   - override 覆盖虚函数
   - final: final函数不能被覆盖
+- 还有默认参数的虚函数
+  - 使用基类中定义的默认实参，即使实际运行的是派生类中的函数版本、
+- 
 
 ## 4.抽象基类
 - 纯虚函数
