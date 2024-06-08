@@ -20,13 +20,16 @@
     - 派生类使用基类的构造函数初始化基类部分。
   - 防止继承发生
     - 如果一个类不希望其他类继承它，应该使用final `class Base final`
-- 3. 类型转换与继承
+- 类型转换与继承
   - 静态类型: 变量声明的类型； 动态类型: 变量或表达式表示的内存中的对象的类型。
   - 基类指针或引用的静态类型和动态类型很可能不一致。
   - 不能将基类转为派生类。
+
 Pritace:
 15.1 What is a virtual member?
+
 A virtual member in a base class expects its derived class define its own version. In particular base classes ordinarily should define a virtual destructor, even if it does no work.
+
 15.2 How does the protected access specifier differ from private?
 
 private member: base class itself and friend can access
