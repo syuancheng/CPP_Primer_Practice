@@ -12,7 +12,12 @@ public:
   std::string isbn() const { return bookNo; }
 
   virtual double net_price(size_t s) const { return s * price; }
-  virtual void debug() const;
+  virtual void debug() const {
+    std::cout << "data members of this class:\n"
+              << "bookNo= " << this->bookNo << " "
+              << "price= " << this->price << " ";
+  }
+
   virtual ~Quote() = default;
 
 private:
